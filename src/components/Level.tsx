@@ -1,13 +1,15 @@
 import React, { FC } from 'react';
 
+import { State } from '../hooks/reducer';
+
 interface Props {
-  level: number;
+  state: State,
 }
 
-const Level: FC<Props> = ({ level }) => {
+const Level: FC<Props> = ({state}) => {
   return (
     <div>
-      <p>Current level: {level}</p>
+      <p>Current level: {state.level}</p>
     </div>
   );
 };

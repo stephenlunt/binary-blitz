@@ -1,9 +1,11 @@
+import Heading from "../styled/Heading";
+
 const Header = () => {
-    return (
-        <div>
-            <h1>Binary Blitz</h1>
-        </div>
-    )
-}
+  return (
+    <Heading>
+      <h1>Binary Blitz</h1>
+    </Heading>
+  );
+};
 
 export default Header;

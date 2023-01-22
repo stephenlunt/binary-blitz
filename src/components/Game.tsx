@@ -1,18 +1,17 @@
-import React, { FC, useState } from 'react';
+import { FC, useReducer } from 'react';
+
+import { gameReducer, INITIAL_STATE } from '../hooks/reducer';
 
 import Level from './Level';
 import GameForm from './GameForm';
 
 const Game: FC = () => {
-  const [level, setLevel] = useState(0);
-  const [currentNumber, setCurrentNumber] = useState(1);
-  const [guess, setGuess] = useState(0);
-  const [queue, setQueue] = useState([2, 4, 8, 16, 32]);
+  const [state, dispatch] = useReducer(gameReducer, INITIAL_STATE);
 
   return (
     <div>
-      <Level level={level} />
-      <GameForm guess={guess} setGuess={setGuess} />
+      <Level state={state} />
+      <GameForm state={state} dispatch={dispatch} />
     </div>
   );
 };

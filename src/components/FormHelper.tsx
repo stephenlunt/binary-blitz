@@ -1,4 +1,5 @@
 import { FC, useState } from 'react';
+import { SecondaryButton } from '../styled/Buttons';
 
 const FormHelper: FC = () => {
   const [visible, setVisible] = useState(false);
@@ -10,7 +11,7 @@ const FormHelper: FC = () => {
   if (visible) {
     return (
       <div>
-        <button onClick={handleHintButton}>Hint</button>
+        <SecondaryButton onClick={handleHintButton}>Hint</SecondaryButton>
         <div>
           <span>512</span>
           <span>256</span>
@@ -26,7 +27,7 @@ const FormHelper: FC = () => {
       </div>
     );
   } else {
-    return <button onClick={handleHintButton}>Hint</button>;
+    return <SecondaryButton onClick={handleHintButton}>Hint</SecondaryButton>;
   }
 };
 
