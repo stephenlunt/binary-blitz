@@ -2,16 +2,14 @@ import React, { FC } from 'react';
 
 import { State } from '../hooks/reducer';
 
+import { LevelBox } from '../styled/Box';
+
 interface Props {
-  state: State,
+  state: State;
 }
 
-const Level: FC<Props> = ({state}) => {
-  return (
-    <div>
-      <p>Current level: {state.level}</p>
-    </div>
-  );
+const Level: FC<Props> = ({ state }) => {
+  return <LevelBox>Level {state.level}</LevelBox>;
 };
 
 export default Level;

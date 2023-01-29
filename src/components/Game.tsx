@@ -5,14 +5,16 @@ import { gameReducer, INITIAL_STATE } from '../hooks/reducer';
 import Level from './Level';
 import GameForm from './GameForm';
 
+import { CenteredBox } from '../styled/FlexBox';
+
 const Game: FC = () => {
   const [state, dispatch] = useReducer(gameReducer, INITIAL_STATE);
 
   return (
-    <div>
+    <CenteredBox>
       <Level state={state} />
       <GameForm state={state} dispatch={dispatch} />
-    </div>
+    </CenteredBox>
   );
 };
 

@@ -1,11 +1,10 @@
 import React, { FC, useEffect, useState } from 'react';
 
 import { State, Action, ACTION_TYPES } from '../hooks/reducer';
-
 import convertBinaryValues from '../util/convertBinaryValues';
-
-import FlexBox from '../styled/FlexBox';
 import { PrimaryButton } from '../styled/Buttons';
+import { Form, InputButton } from '../styled/Forms';
+import { MessageBox } from '../styled/Box';
 
 interface Props {
   state: State;
@@ -18,9 +17,13 @@ const FormInputs: FC<Props> = ({ state, dispatch }) => {
   const [binaryValues, setBinaryValues] = useState(INITIAL_BINARY_VALUES);
   const [playerGuess, setPlayerGuess] = useState(0);
 
-  const handleChange = (newValue: string, index: number) => {
+  const handleClick = (prevValue: string, index: number) => {
     let newValues = [...binaryValues];
-    newValues[index] = parseInt(newValue);
+    if (parseInt(prevValue) === 0) {
+      newValues[index] = 1;
+    } else {
+      newValues[index] = 0;
+    }
     setBinaryValues(newValues);
   };
 
@@ -39,24 +42,28 @@ const FormInputs: FC<Props> = ({ state, dispatch }) => {
   }, [playerGuess]);
 
   return (
-    <FlexBox>
-      <form onSubmit={handleSubmit}>
-        {binaryValues.map((value, index) => {
-          return (
-            <input
-              key={index}
-              type="number"
-              min={0}
-              max={1}
-              value={value}
-              onChange={(e) => handleChange(e.target.value, index)}
-            />
-          );
-        })}
-        <br />
+    <>
+      <Form onSubmit={handleSubmit}>
+        <div>
+          {binaryValues.map((value, index) => {
+            return (
+              <InputButton
+                key={index}
+                type="button"
+                value={value}
+                onClick={(e: React.ChangeEvent<HTMLInputElement>) =>
+                  handleClick(e.target.value, index)
+                }
+              />
+            );
+          })}
+        </div>
+        <MessageBox className={state.prevState}>
+          {state.playerMessage}
+        </MessageBox>
         <PrimaryButton type="submit">Check</PrimaryButton>
-      </form>
-    </FlexBox>
+      </Form>
+    </>
   );
 };
 

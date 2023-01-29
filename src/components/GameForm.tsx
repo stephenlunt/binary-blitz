@@ -4,7 +4,9 @@ import { State, Action } from '../hooks/reducer';
 
 import FormInputs from './FormInputs';
 import FormHelper from './FormHelper';
-import Queue from './NextNumber';
+
+import { CenteredBox } from '../styled/FlexBox';
+import { BorderBox, NumberBox } from '../styled/Box';
 
 interface Props {
   state: State;
@@ -14,12 +16,15 @@ interface Props {
 const GameForm: FC<Props> = ({ state, dispatch }) => {
   return (
     <div>
-      <h2>Current Number: {state.currentNumber}</h2>
-      <p>Enter your guess below!</p>
+      <CenteredBox>
+        <BorderBox>
+          <span>Current Number</span>
+          <NumberBox>{state.currentNumber}</NumberBox>
+        </BorderBox>
+      </CenteredBox>
 
       <FormHelper />
       <FormInputs state={state} dispatch={dispatch} />
-      <Queue state={state} />
     </div>
   );
 };

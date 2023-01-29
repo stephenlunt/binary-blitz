@@ -1,11 +1,17 @@
 import { Reducer } from 'react';
 
 import generateRandomNumber from '../util/generateRandomNumber';
+import {
+  newWinPlayerMessage,
+  newLossPlayerMessage
+} from '../util/playerMessages';
 
 export interface State {
   level: number;
   currentNumber: number | undefined;
   nextNumber: number;
+  prevState: string;
+  playerMessage: string;
 }
 
 export interface Action {
@@ -15,7 +21,9 @@ export interface Action {
 export const INITIAL_STATE: State = {
   level: 0,
   currentNumber: 1,
-  nextNumber: 4
+  nextNumber: 4,
+  prevState: 'loss',
+  playerMessage: ''
 };
 
 export const ACTION_TYPES = {
@@ -29,16 +37,29 @@ export const gameReducer: Reducer<State, Action> = (state, action) => {
       const level: number = state.level + 1;
       const currentNumber: number = state.nextNumber;
       const newRandInt: number = generateRandomNumber(level);
+      const winMessage: string = newWinPlayerMessage();
 
-      const newState: State = {
+      const newWinState: State = {
         level: level,
         currentNumber: currentNumber,
-        nextNumber: newRandInt
+        nextNumber: newRandInt,
+        prevState: 'win',
+        playerMessage: winMessage
       };
 
-      return newState;
+      return newWinState;
     case ACTION_TYPES.LOSS:
-      return INITIAL_STATE;
+      if (state.level === 0) {
+        return INITIAL_STATE;
+      }
+
+      const lossMessage: string = newLossPlayerMessage();
+
+      const newLossState: State = {
+        ...INITIAL_STATE,
+        playerMessage: lossMessage
+      };
+      return newLossState;
     default:
       return state;
   }

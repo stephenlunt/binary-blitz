@@ -1,5 +1,8 @@
 import { FC, useState } from 'react';
+
 import { SecondaryButton } from '../styled/Buttons';
+import { CenteredBox } from '../styled/FlexBox';
+import { HintContainer, HintItem } from '../styled/HintContainer';
 
 const FormHelper: FC = () => {
   const [visible, setVisible] = useState(false);
@@ -11,23 +14,31 @@ const FormHelper: FC = () => {
   if (visible) {
     return (
       <div>
-        <SecondaryButton onClick={handleHintButton}>Hint</SecondaryButton>
-        <div>
-          <span>512</span>
-          <span>256</span>
-          <span>128</span>
-          <span>64</span>
-          <span>32</span>
-          <span>16</span>
-          <span>8</span>
-          <span>4</span>
-          <span>2</span>
-          <span>1</span>
-        </div>
+        <CenteredBox>
+          <SecondaryButton onClick={handleHintButton}>
+            Hide Hints
+          </SecondaryButton>
+        </CenteredBox>
+        <HintContainer>
+          <HintItem>512</HintItem>
+          <HintItem>256</HintItem>
+          <HintItem>128</HintItem>
+          <HintItem>64</HintItem>
+          <HintItem>32</HintItem>
+          <HintItem>16</HintItem>
+          <HintItem>8</HintItem>
+          <HintItem>4</HintItem>
+          <HintItem>2</HintItem>
+          <HintItem>1</HintItem>
+        </HintContainer>
       </div>
     );
   } else {
-    return <SecondaryButton onClick={handleHintButton}>Hint</SecondaryButton>;
+    return (
+      <CenteredBox>
+        <SecondaryButton onClick={handleHintButton}>Show Hints</SecondaryButton>
+      </CenteredBox>
+    );
   }
 };
 
