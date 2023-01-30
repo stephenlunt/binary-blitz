@@ -1,4 +1,6 @@
-// Win and loss messages for user feedback.
+/**
+ * Win and loss messages to be displayed randomly to user.
+ */
 const PLAYER_MESSAGES = {
   WIN: [
     'Well done!',
@@ -32,13 +34,21 @@ const PLAYER_MESSAGES = {
   ]
 };
 
-export function newWinPlayerMessage() {
+/**
+ * Picks a random player win message from PLAYER_MESSAGES constant.
+ * @returns {string} The win player message.
+ */
+export function newWinPlayerMessage(): string {
   return PLAYER_MESSAGES.WIN[
     Math.floor(Math.random() * PLAYER_MESSAGES.WIN.length)
   ];
 }
 
-export function newLossPlayerMessage() {
+/**
+ * Picks a random player loss message from PLAYER_MESSAGES constant.
+ * @returns {string} The loss player message.
+ */
+export function newLossPlayerMessage(): string {
   return PLAYER_MESSAGES.LOSS[
     Math.floor(Math.random() * PLAYER_MESSAGES.LOSS.length)
   ];

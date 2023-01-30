@@ -4,6 +4,9 @@ import { SecondaryButton } from '../styled/Buttons';
 import { CenteredBox } from '../styled/FlexBox';
 import { HintContainer, HintItem } from '../styled/HintContainer';
 
+/**
+ * Renders the hint row with toggle button.
+ */
 const FormHelper: FC = () => {
   const [visible, setVisible] = useState(false);
 

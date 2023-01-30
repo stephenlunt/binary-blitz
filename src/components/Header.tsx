@@ -1,6 +1,11 @@
+import { FC } from 'react';
+
 import Heading from '../styled/Heading';
 
-const Header = () => {
+/**
+ * Renders the game heading.
+ */
+const Header: FC = () => {
   return <Heading>Binary Blitz</Heading>;
 };
 

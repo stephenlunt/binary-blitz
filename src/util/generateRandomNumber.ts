@@ -1,3 +1,8 @@
+/**
+ * Sets the maximum decimal number based upon game level.
+ * @param level The current game level from React reducer.
+ * @returns {number} The maximum possible decimal number.
+ */
 function setMaxFromLevel(level: number): number {
   switch (true) {
     case level < 10:
@@ -13,9 +18,12 @@ function setMaxFromLevel(level: number): number {
   }
 }
 
-function generateRandomNumber(level: number): number {
+/**
+ * Generates a random integer based upon the game level passed into the function.
+ * @param level The current game level from React reducer.
+ * @returns {number} The new decimal number for the player to guess.
+ */
+export default function generateRandomNumber(level: number): number {
   let maxNumber: number = setMaxFromLevel(level);
   return Math.floor(Math.random() * maxNumber);
 }
-
-export default generateRandomNumber;

@@ -6,9 +6,12 @@ import {
   newLossPlayerMessage
 } from '../util/playerMessages';
 
+/**
+ * Define TypeScript interfaces for game wide state
+ */
 export interface State {
   level: number;
-  currentNumber: number | undefined;
+  currentNumber: number;
   nextNumber: number;
   prevState: string;
   playerMessage: string;
@@ -31,7 +34,13 @@ export const ACTION_TYPES = {
   LOSS: 'LOSS'
 };
 
-export const gameReducer: Reducer<State, Action> = (state, action) => {
+/**
+ * Handles any changes to the game state on win and loss outcomes.
+ * @param state The current game state.
+ * @param action Contains the action type to be carried out.
+ * @returns {State} Returns the new game state.
+ */
+export const gameReducer: Reducer<State, Action> = (state, action): State => {
   switch (action.type) {
     case ACTION_TYPES.WIN:
       const level: number = state.level + 1;

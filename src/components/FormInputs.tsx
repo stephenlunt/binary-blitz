@@ -11,8 +11,12 @@ interface Props {
   dispatch: React.Dispatch<Action>;
 }
 
+// Initialise the binary array to all 0's.
 const INITIAL_BINARY_VALUES: number[] = new Array(10).fill(0);
 
+/**
+ * Render and define logic for the game form.
+ */
 const FormInputs: FC<Props> = ({ state, dispatch }) => {
   const [binaryValues, setBinaryValues] = useState(INITIAL_BINARY_VALUES);
   const [playerGuess, setPlayerGuess] = useState(0);

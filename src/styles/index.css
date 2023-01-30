@@ -18,6 +18,7 @@ input[type='number'] {
   -moz-appearance: textfield;
 }
 
+/* Style class based win/loss messages */
 .win {
   color: #05a305;
 }
